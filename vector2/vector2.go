@@ -11,6 +11,24 @@ type Vector2 struct {
 	Y float64
 }
 
+func Zero() *Vector2 {
+	return &Vector2{0.0, 0.0}
+}
+
+func (v *Vector2) Clone(v2 *Vector2) *Vector2 {
+	return &Vector2{v2.X, v2.Y}
+}
+
+func (v *Vector2) Assign(v2 *Vector2) *Vector2 {
+	v.X = v2.X
+	v.Y = v2.Y
+	return v
+}
+
+func (v *Vector2) Equals(v2 *Vector2) bool {
+	return v.X == v2.X && v.Y == v2.Y
+}
+
 func (v *Vector2) Add(v2 *Vector2) *Vector2 {
 	return &Vector2{v.X + v2.X, v.Y + v2.Y}
 }
