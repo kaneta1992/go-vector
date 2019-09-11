@@ -14,8 +14,8 @@ func Zero() *Vector3 {
 	return &Vector3{0.0, 0.0, 0.0}
 }
 
-func (v *Vector3) Clone(v2 *Vector3) *Vector3 {
-	return &Vector3{v2.X, v2.Y, v2.Z}
+func (v *Vector3) Clone() *Vector3 {
+	return &Vector3{v.X, v.Y, v.Z}
 }
 
 func (v *Vector3) Assign(v2 *Vector3) *Vector3 {
@@ -87,4 +87,11 @@ func (v *Vector3) Normalize() *Vector3 {
 
 func (v *Vector3) Abs() *Vector3 {
 	return &Vector3{math.Abs(v.X), math.Abs(v.Y), math.Abs(v.Z)}
+}
+
+func (v *Vector3) Lerp(v2 *Vector3, t float64) *Vector3 {
+	v.X = (1.0-t)*v.X + t*v2.X
+	v.Y = (1.0-t)*v.Y + t*v2.Y
+	v.Z = (1.0-t)*v.Z + t*v2.Z
+	return v
 }
